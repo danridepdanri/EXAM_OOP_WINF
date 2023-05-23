@@ -5,6 +5,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
 namespace EXAM_OOP_WINF
+// login and pass rewrite 
+
+
 {
     public partial class Form1 : Form
     {
@@ -26,23 +29,23 @@ namespace EXAM_OOP_WINF
             tabControl1.TabPages.Remove(tabPage2);
             index_tab3 = tabControl1.TabPages.IndexOf(tabPage3);
             tabControl1.TabPages.Remove(tabPage3);
-            // создаем иконку в трее
+            // Г±Г®Г§Г¤Г ГҐГ¬ ГЁГЄГ®Г­ГЄГі Гў ГІГ°ГҐГҐ
             trayIcon = new NotifyIcon();
             trayIcon.Text = "My App";
             trayIcon.Icon = new Icon("C:\\Users\\Admin\\source\\repos\\EXAM_OOP_WINF\\EXAM_OOP_WINF\\Anonymous_emblem.svg.ico");
             trayIcon.Visible = true;
 
             listBox_team.DataSource = teams;
-            // добавляем обработчик для двойного щелчка на иконке в трее
+            // Г¤Г®ГЎГ ГўГ«ГїГҐГ¬ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄ Г¤Г«Гї Г¤ГўГ®Г©Г­Г®ГЈГ® Г№ГҐГ«Г·ГЄГ  Г­Г  ГЁГЄГ®Г­ГЄГҐ Гў ГІГ°ГҐГҐ
             trayIcon.DoubleClick += TrayIcon_DoubleClick;
 
-            // добавляем обработчик для клика на иконке в трее
+            // Г¤Г®ГЎГ ГўГ«ГїГҐГ¬ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄ Г¤Г«Гї ГЄГ«ГЁГЄГ  Г­Г  ГЁГЄГ®Г­ГЄГҐ Гў ГІГ°ГҐГҐ
             trayIcon.MouseClick += TrayIcon_MouseClick;
         }
 
         private void TrayIcon_DoubleClick(object sender, EventArgs e)
         {
-            // показываем главное окно приложения
+            // ГЇГ®ГЄГ Г§Г»ГўГ ГҐГ¬ ГЈГ«Г ГўГ­Г®ГҐ Г®ГЄГ­Г® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
             this.Show();
             this.WindowState = FormWindowState.Normal;
             this.Activate();
@@ -52,11 +55,11 @@ namespace EXAM_OOP_WINF
         {
             if (e.Button == MouseButtons.Left)
             {
-                MessageBox.Show("Тыкайте два раза ЛКМ, один клик не реализовал ведь не требовалось :)");
+                MessageBox.Show("Г’Г»ГЄГ Г©ГІГҐ Г¤ГўГ  Г°Г Г§Г  Г‹ГЉГЊ, Г®Г¤ГЁГ­ ГЄГ«ГЁГЄ Г­ГҐ Г°ГҐГ Г«ГЁГ§Г®ГўГ Г« ГўГҐГ¤Гј Г­ГҐ ГІГ°ГҐГЎГ®ГўГ Г«Г®Г±Гј :)");
             }
             else if (e.Button == MouseButtons.Right)
             {
-                MessageBox.Show("Тыкайте два раза ЛКМ, один клик не реализовал ведь не требовалось :)");
+                MessageBox.Show("Г’Г»ГЄГ Г©ГІГҐ Г¤ГўГ  Г°Г Г§Г  Г‹ГЉГЊ, Г®Г¤ГЁГ­ ГЄГ«ГЁГЄ Г­ГҐ Г°ГҐГ Г«ГЁГ§Г®ГўГ Г« ГўГҐГ¤Гј Г­ГҐ ГІГ°ГҐГЎГ®ГўГ Г«Г®Г±Гј :)");
             }
         }
 
@@ -69,58 +72,58 @@ namespace EXAM_OOP_WINF
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // выходим из приложения
+            // ГўГ»ГµГ®Г¤ГЁГ¬ ГЁГ§ ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
             Application.Exit();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // Проверяем, что введены логин и пароль
+            // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬, Г·ГІГ® ГўГўГҐГ¤ГҐГ­Г» Г«Г®ГЈГЁГ­ ГЁ ГЇГ Г°Г®Г«Гј
             if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
             {
-                MessageBox.Show("Введите логин и пароль");
+                MessageBox.Show("Г‚ГўГҐГ¤ГЁГІГҐ Г«Г®ГЈГЁГ­ ГЁ ГЇГ Г°Г®Г«Гј");
                 return;
             }
 
-            // Проверяем логин и пароль на соответствие
+            // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ Г«Г®ГЈГЁГ­ ГЁ ГЇГ Г°Г®Г«Гј Г­Г  Г±Г®Г®ГІГўГҐГІГ±ГІГўГЁГҐ
             if (txtUsername.Text == "admin" && txtPassword.Text == "admin")
             {
                 TabPage selectedTab = tabControl1.SelectedTab;
-                // Удаляем выбранную вкладку
+                // Г“Г¤Г Г«ГїГҐГ¬ ГўГ»ГЎГ°Г Г­Г­ГіГѕ ГўГЄГ«Г Г¤ГЄГі
                 tabControl1.TabPages.Remove(selectedTab);
-                // Восстановить вкладку в TabControl
+                // Г‚Г®Г±Г±ГІГ Г­Г®ГўГЁГІГј ГўГЄГ«Г Г¤ГЄГі Гў TabControl
                 tabControl1.TabPages.Insert(index_tab1 - 1, tabPage1);
-                // Переключаемся на новую вкладку
+                // ГЏГҐГ°ГҐГЄГ«ГѕГ·Г ГҐГ¬Г±Гї Г­Г  Г­Г®ГўГіГѕ ГўГЄГ«Г Г¤ГЄГі
                 tabControl1.SelectedTab = tabPage1;
-                // Показываем сообщение об успешной авторизации
-                MessageBox.Show("Авторизация прошла успешно");
+                // ГЏГ®ГЄГ Г§Г»ГўГ ГҐГ¬ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г®ГЎ ГіГ±ГЇГҐГёГ­Г®Г© Г ГўГІГ®Г°ГЁГ§Г Г¶ГЁГЁ
+                MessageBox.Show("ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї ГЇГ°Г®ГёГ«Г  ГіГ±ГЇГҐГёГ­Г®");
             }
             else
             {
-                // Показываем сообщение об ошибке авторизации
-                MessageBox.Show("Неверный логин или пароль");
+                // ГЏГ®ГЄГ Г§Г»ГўГ ГҐГ¬ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г®ГЎ Г®ГёГЁГЎГЄГҐ Г ГўГІГ®Г°ГЁГ§Г Г¶ГЁГЁ
+                MessageBox.Show("ГЌГҐГўГҐГ°Г­Г»Г© Г«Г®ГЈГЁГ­ ГЁГ«ГЁ ГЇГ Г°Г®Г«Гј");
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            // Выходим из приложения
+            // Г‚Г»ГµГ®Г¤ГЁГ¬ ГЁГ§ ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
             Application.Exit();
         }
 
         private void btnExit1_Click(object sender, EventArgs e)
         {
-            // Выходим из приложения
+            // Г‚Г»ГµГ®Г¤ГЁГ¬ ГЁГ§ ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
             Application.Exit();
         }
         private void btnExit2_Click(object sender, EventArgs e)
         {
-            // Выходим из приложения
+            // Г‚Г»ГµГ®Г¤ГЁГ¬ ГЁГ§ ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
             Application.Exit();
         }
         private void btnExit3_Click(object sender, EventArgs e)
         {
-            // Выходим из приложения
+            // Г‚Г»ГµГ®Г¤ГЁГ¬ ГЁГ§ ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
             Application.Exit();
         }
 
@@ -167,30 +170,30 @@ namespace EXAM_OOP_WINF
 
         private void size_array_team_Click(object sender, EventArgs e)
         {
-            string result = InputDialog.Show("Заголовок окна", "Введите значение:");
+            string result = InputDialog.Show("Г‡Г ГЈГ®Г«Г®ГўГ®ГЄ Г®ГЄГ­Г ", "Г‚ГўГҐГ¤ГЁГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ:");
             int intValue;
             if (int.TryParse(result, out intValue))
             {
                 if (intValue % 2 != 0)
                 {
-                    MessageBox.Show("Количество команд должно быть четным! Попробуйте еще раз: ");
+                    MessageBox.Show("ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ®Г¬Г Г­Г¤ Г¤Г®Г«Г¦Г­Г® ГЎГ»ГІГј Г·ГҐГІГ­Г»Г¬! ГЏГ®ГЇГ°Г®ГЎГіГ©ГІГҐ ГҐГ№ГҐ Г°Г Г§: ");
                 }
                 else
                 {
-                    // Восстановить вкладку в TabControl
+                    // Г‚Г®Г±Г±ГІГ Г­Г®ГўГЁГІГј ГўГЄГ«Г Г¤ГЄГі Гў TabControl
                     tabControl1.TabPages.Insert(index_tab2 - 1, tabPage2);
-                    // Переключаемся на новую вкладку
+                    // ГЏГҐГ°ГҐГЄГ«ГѕГ·Г ГҐГ¬Г±Гї Г­Г  Г­Г®ГўГіГѕ ГўГЄГ«Г Г¤ГЄГі
                     tabControl1.SelectedTab = tabPage2;
                     index_tab1 = tabControl1.TabPages.IndexOf(tabPage1);
                     tabControl1.TabPages.Remove(tabPage1);
-                    MessageBox.Show("Количество команд:" + result);
+                    MessageBox.Show("ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ®Г¬Г Г­Г¤:" + result);
                     count_team = intValue;
                     count_team_table = intValue;
                 }
             }
             else
             {
-                MessageBox.Show("Введено не целое число");
+                MessageBox.Show("Г‚ГўГҐГ¤ГҐГ­Г® Г­ГҐ Г¶ГҐГ«Г®ГҐ Г·ГЁГ±Г«Г®");
             }
         }
 
@@ -198,7 +201,7 @@ namespace EXAM_OOP_WINF
         {
             if (count_team > 0)
             {
-                string team = InputDialog.Show("Введите название команды", string.Format("Команда №{0}", count_i_team));
+                string team = InputDialog.Show("Г‚ГўГҐГ¤ГЁГІГҐ Г­Г Г§ГўГ Г­ГЁГҐ ГЄГ®Г¬Г Г­Г¤Г»", string.Format("ГЉГ®Г¬Г Г­Г¤Г  В№{0}", count_i_team));
                 if (!string.IsNullOrEmpty(team))
                 {
                     teams.Add(team);
@@ -212,13 +215,13 @@ namespace EXAM_OOP_WINF
                     }
                     else
                     {
-                        MessageBox.Show("Введены все команды");
+                        MessageBox.Show("Г‚ГўГҐГ¤ГҐГ­Г» ГўГ±ГҐ ГЄГ®Г¬Г Г­Г¤Г»");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Введены все команды");
+                MessageBox.Show("Г‚ГўГҐГ¤ГҐГ­Г» ГўГ±ГҐ ГЄГ®Г¬Г Г­Г¤Г»");
 
             }
 
@@ -226,7 +229,7 @@ namespace EXAM_OOP_WINF
 
         private void button_dell_team_Click(object sender, EventArgs e)
         {
-            string name = InputDialog.Show("Введите название команды для удаления", "Удаление команды");
+            string name = InputDialog.Show("Г‚ГўГҐГ¤ГЁГІГҐ Г­Г Г§ГўГ Г­ГЁГҐ ГЄГ®Г¬Г Г­Г¤Г» Г¤Г«Гї ГіГ¤Г Г«ГҐГ­ГЁГї", "Г“Г¤Г Г«ГҐГ­ГЁГҐ ГЄГ®Г¬Г Г­Г¤Г»");
             if (!string.IsNullOrEmpty(name))
             {
                 if (teams.Contains(name))
@@ -236,11 +239,11 @@ namespace EXAM_OOP_WINF
                     listBox_team.DataSource = teams;
                     count_team++;
                     count_i_team--;
-                    MessageBox.Show("Команда удалена.", "Удаление команды");
+                    MessageBox.Show("ГЉГ®Г¬Г Г­Г¤Г  ГіГ¤Г Г«ГҐГ­Г .", "Г“Г¤Г Г«ГҐГ­ГЁГҐ ГЄГ®Г¬Г Г­Г¤Г»");
                 }
                 else
                 {
-                    MessageBox.Show("Команда не найдена.", "Удаление команды");
+                    MessageBox.Show("ГЉГ®Г¬Г Г­Г¤Г  Г­ГҐ Г­Г Г©Г¤ГҐГ­Г .", "Г“Г¤Г Г«ГҐГ­ГЁГҐ ГЄГ®Г¬Г Г­Г¤Г»");
                 }
             }
         }
@@ -249,19 +252,19 @@ namespace EXAM_OOP_WINF
         {
             if (count_team == 0)
             {
-                // Восстановить вкладку в TabControl
+                // Г‚Г®Г±Г±ГІГ Г­Г®ГўГЁГІГј ГўГЄГ«Г Г¤ГЄГі Гў TabControl
                 tabControl1.TabPages.Insert(index_tab3 - 1, tabPage3);
-                // Переключаемся на новую вкладку
+                // ГЏГҐГ°ГҐГЄГ«ГѕГ·Г ГҐГ¬Г±Гї Г­Г  Г­Г®ГўГіГѕ ГўГЄГ«Г Г¤ГЄГі
                 tabControl1.SelectedTab = tabPage3;
                 index_tab2 = tabControl1.TabPages.IndexOf(tabPage2);
                 tabControl1.TabPages.Remove(tabPage2);
                 //
                 //
-                label1.Text = "\nРасписание туров:\n";
+                label1.Text = "\nГђГ Г±ГЇГЁГ±Г Г­ГЁГҐ ГІГіГ°Г®Гў:\n";
 
                 for (int i = 1; i <= count_team_table - 1; i++)
                 {
-                    label1.Text += string.Format("Тур {0}:\n", i);
+                    label1.Text += string.Format("Г’ГіГ° {0}:\n", i);
 
                     for (int j = 0; j < count_team_table / 2; j++)
                     {
@@ -276,7 +279,7 @@ namespace EXAM_OOP_WINF
 
             else
             {
-                MessageBox.Show("Введены не все команды, создание туров невозможно");
+                MessageBox.Show("Г‚ГўГҐГ¤ГҐГ­Г» Г­ГҐ ГўГ±ГҐ ГЄГ®Г¬Г Г­Г¤Г», Г±Г®Г§Г¤Г Г­ГЁГҐ ГІГіГ°Г®Гў Г­ГҐГўГ®Г§Г¬Г®Г¦Г­Г®");
             }
         }
 
